@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Contactpagina";
+}
+
+@section contact{
+    <script src="../lib/jquery.js"></script>
+           
+        <div class="contactwrapper">
+
+            <div class="container">
+                <div class="row bovenstecontact">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="containerr">
+                            <h5>Over Jos </h5>
+                            <img src="https://image.ibb.co/dpLYuc/rsz_jos_foppele.jpg" alt="rsz_jos_foppele" border="0" id="josfoto" />
+                            <p>Hallo, ik ben Jos Foppele en ik ben de CEO van het bedrijf Cyberdyne. Ik heb enorme passie voor robots en drones en dat wil ik graag via deze website met jullie delen.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-4 niks">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="containerr">
+                            <h5>Contactgegevens </h5>
+                            <p><b>Naam:</b> Jos Foppele</p>
+                            <p><b>Functie:</b> CEO Cyberdyne</p>
+                            <p><b>E-mail:</b> j.foppele@nhl.nl</p>
+                            <a href="https://www.linkedin.com/in/jos-foppele-33757a106/" target="_blank">
+                                <img id="linkedin" src="~/images/linkedin.png" alt="LinkedIn Jos Foppele" />
+                            </a>
+                            <a href="https://www.nhl.nl/opleiding/voltijd/hbo-ict" target="_blank">
+                                <img id="nhlhogeschool" src="~/images/schoolofict.png" alt="NHL website" />
+                            </a>
+                            <a href="https://www.nhl.nl/opleiding/deeltijd/hbo-ict" target="_blank">
+                                <img id="schoolofict" src="~/images/browserlogo.png" alt="School of ICT" />
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row oogwrap">
+                    
+                    <div class="col-sm-12 col-md-12 col-lg-12 oog">
+                        
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                </div>
+                <div class="row onderstecontact">
+                    <div class="col-sm-12 col-md 6 col-lg-4">
+                        <h5>Adres Cyberdyne:</h5>
+                        <p> Rengerslaan 10 8917DD Leeuwarden </p>
+                        <div id="map"></div>
+                        <style>
+                            #map {
+                                height: 250px;
+                                width: 100%;
+                            }
+                        </style>
+                        <script>
+                            function initMap() {
+                                var uluru = { lat: 53.211638, lng: 5.799354 };
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 12,
+                                    center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map: map
+                                });
+                            }
+                        </script>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                    </div>
+
+                    <div class="col-sm-12 col-md 6 col-lg-4">
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="containerr">
+                                <h5>Stuur een bericht</h5>
+
+
+                                <form action="~/Email_send.cshtml">
+                                    <label for="fname">Naam</label>
+                                    <input type="text" id="fname" name="firstname" placeholder="Uw naam">
+
+                                    <label for="email">E-mail</label>
+                                    <input type="text" id="fname" name="email" placeholder="E-mail">
+
+                                    <label for="country">Country</label>
+                                    <select id="country" name="country">
+                                        <option value="nederland">Nederland</option>
+                                        <option value="belgie">België</option>
+                                        <option value="engeland">Engeland</option>
+                                    </select>
+
+                                    <label for="subject">Onderwerp</label>
+                                    <textarea id="subject" name="subject" placeholder="Schrijf hier uw bericht" style="height:100px"></textarea>
+
+                                    <input type="submit" value="Verstuur">
+
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4"> </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT-0FBfJebRFv5O8xVNFIDjofxcAxY2Jc&callback=initMap">
+        </script>
+}
+
+
+

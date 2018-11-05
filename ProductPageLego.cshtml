@@ -1,0 +1,145 @@
+﻿@using WebMatrix.Data
+@using System.Data;
+@using System.Data.SqlClient;
+
+@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Legorobot";
+}
+
+@functions
+{
+    /*List<string> urls = new List<string>();*/
+    string activeclass1;
+    string activeclass2;
+
+    string Query1 = ("SELECT Url FROM ImageTbl WHERE Type = 'Lego' AND Subtype = 'Gallerij'");
+    /*string Query2 = ("SELECT Url FROM ImageTbl WHERE Type = 'Lego' AND Subtype = 'Specificaties'");
+    string Query3 = ("SELECT Url FROM ImageTbl WHERE Type = 'Lego' AND Subtype = 'Reparatie'");
+    string Query4 = ("SELECT Url FROM ImageTbl WHERE Type = 'Lego' AND Subtype = 'Onderdelen'");*/
+}
+
+@{
+    List<string> urls = new List<string>();
+    Database db = Database.Open("Database");
+    var url = db.Query(@Query1);
+    <ul>
+        @foreach (var item in url)
+        {
+            urls.Add(item.Url);
+        }
+    </ul>
+ 
+}
+
+@section legorobot{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                $("#TxtDiv").load("/Content/test_text.txt #l1");
+                $("#BodyDiv").load("/Content/legocarousel.txt #b1")
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#button2").click(function () {
+                $("#TxtDiv").load("/Content/test_text.txt #l2");
+                $("#BodyDiv").load("/Content/legocarousel.txt #b2")
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#button3").click(function () {
+                $("#TxtDiv").load("/Content/test_text.txt #l3");
+                $("#BodyDiv").load("/Content/legocarousel.txt #b3")
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#button4").click(function () {
+                $("#TxtDiv").load("/Content/test_text.txt #l4");
+                $("#BodyDiv").load("/Content/legocarousel.txt #b4")
+            });
+        });
+    </script>
+
+    
+
+    <div class="DFTekstTop col-lg-12 container">
+        <p><b>Lego Mindstorm</b></p>
+    </div> <!-- Tekstblok bovenaan productpagina-->
+
+    <div class="container DFMainBody">
+        <div class="row">
+            <div class="DFToolbar col-lg-2 border">
+                <button type="button" class="btn btn-outline-secondary btn-block" onclick="" id="button1">Gallerij</button>
+                <button type="button" class="btn btn-outline-secondary btn-block" onclick="" id="button2">Over Mindstorms</button>
+                <button type="button" class="btn btn-outline-secondary btn-block" onclick="" id="button3">Reparatie</button>
+                <button type="button" class="btn btn-outline-secondary btn-block" onclick="" id="button4">Kits & Onderdelen</button>
+                <button class="btn btn-outline-secondary btn-block">Forum</button>
+                <button class="btn btn-outline-secondary btn-block">TBD</button>
+
+            </div> <!-- Sliders/buttons links van gallerij oid-->
+            <div class="col-lg-7 border" align="center" id="BodyDiv">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @for (int i = 0; i < urls.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                activeclass1 = "active";
+                            }
+                            else
+                            {
+                                activeclass1 = "";
+                            }
+                            <li data-target="#carouselExampleIndicators" data-slide-to=@i class="@activeclass1"></li>
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        @for (int j = 0; j < urls.Count; j++)
+                        {
+                            if (j == 0)
+                            {
+                                activeclass2 = "carousel-item active";
+                            }
+                            else
+                            {
+                                activeclass2 = "carousel-item";
+                            }
+                            <div class="@activeclass2">
+                                <div class="Img" style="background-image: url(images/@urls[j])"></div>
+                            </div>
+                        }
+                    </div>
+
+                    @if (urls.Count > 1){
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>}
+                </div>
+            </div> <!-- Main gallery middle-->
+            <div class="DFTekstRechts col-lg-3 border text-justify" id="TxtDiv">
+                <p class="text-justify">
+                    Klik op één van de knoppen links!
+                </p>
+            </div> <!-- Tekstblok rechts van gallerij oid-->
+        </div>
+    </div> <!-- Main body page-->
+}
+
+
+
+
+
+

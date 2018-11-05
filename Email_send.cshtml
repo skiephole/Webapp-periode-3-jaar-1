@@ -1,0 +1,18 @@
+﻿
+<!--Not working due to server problems.-->
+@{ //Read input
+    var customerName = Request["customerName"];
+    var customerEmail = Request["customerEmail"];
+    var customerRequest = Request["customerRequest"];
+
+    try
+    {
+        //Send email
+        WebMail.Send(to: "demistedehouder@gmail.com", subject: "Een bericht van: " + customerEmail, body: customerRequest);
+    }
+
+    catch (Exception ex)
+    {
+        <text>@ex</text>
+    }
+}

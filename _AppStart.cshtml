@@ -1,0 +1,23 @@
+﻿
+<!--Not working due to server problems.-->
+@{
+    //WebSecurity.InitializeDatabaseConnection("Database", "UserProfile", "UserId", "Email", autoCreateTables: true);
+
+    /*Naming SMTP (Simple Mail Transer Protocol) server that will be used*/
+    WebMail.SmtpServer =        "smtp.gmail.com";
+
+    /*Server port that will be used to send emails*/
+    WebMail.SmtpPort =          587;
+
+
+    /*is true if server should use SSL (Secure Sockey Layer)*/
+    WebMail.EnableSsl =         true;
+
+    /*Name of email account used to send mail*/
+    WebMail.UserName =          "demistedehouder@gmail.com";
+
+    /*Password to SMTP email account*/
+    WebMail.Password =          "password";
+
+
+}
